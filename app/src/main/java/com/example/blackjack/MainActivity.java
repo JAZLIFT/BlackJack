@@ -68,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         Random random = new Random();
         int card;
-        card = random.nextInt(4);
+        card = random.nextInt(8);
+        while (card == playerScore[0] || card == playerScore[1] || card == playerScore[2] || card == playerScore[3] || card == playerScore[4] ){
+            Log.i("DUPLICATE FOUND","REROLLING");
+            card = random.nextInt(8);
+        }
         addPlayerCard(card);
         showPlayerCard();
 
