@@ -64,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         TextView playerScoreTextView = findViewById(R.id.playerScoreTextView);
-        playerScoreTextView.setText(String.valueOf(playerNumber));
+        if (playerNumber == 21){
+            playerScoreTextView.setText("BlackJack!");
+        } else {
+            playerScoreTextView.setText(String.valueOf(playerNumber));
+        }
     }
 
     public void showPlayerCard(){
