@@ -65,8 +65,11 @@ public class MainActivity extends AppCompatActivity {
         }
         TextView playerScoreTextView = findViewById(R.id.playerScoreTextView);
         if (playerNumber == 21){
-            playerScoreTextView.setText("BlackJack!");
-        } else {
+            playerScoreTextView.setText("BLACKJACK!!");
+        } else if (playerNumber > 21) {
+            playerScoreTextView.setText("BUST!");
+        } else{
+
             playerScoreTextView.setText(String.valueOf(playerNumber));
         }
     }
