@@ -77,4 +77,13 @@
         app:layout_constraintStart_toEndOf="@+id/playerCardImageView4"
         app:srcCompat="@drawable/two_c" />
 
+    <TextView
+        android:id="@+id/playerScoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerCardImageView1"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView[] playerCardsImageViews = new ImageView[5];
     int[] playerScore = new int[5];
+    int playerNumber = 0;
 
     public void addPlayerCard(Integer card){
         for (int i = 0; i < playerScore.length; i++){
@@ -24,6 +26,45 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+    public void updatePlayerScoore(){
+        playerNumber = 0;
+        for (int i = 0; i < playerScore.length;i++){
+            if (playerScore[i] >= 0 && playerScore[i] <= 3){
+                playerNumber += 2;
+            }
+            else if (playerScore[i] >= 4 && playerScore[i] <= 7){
+                playerNumber += 3;
+            }
+            else if (playerScore[i] >= 8 && playerScore[i] <= 11){
+                playerNumber += 4;
+            }
+            else if (playerScore[i] >= 12 && playerScore[i] <= 15){
+                playerNumber += 5;
+            }
+            else if (playerScore[i] >= 16 && playerScore[i] <= 19){
+                playerNumber += 6;
+            }
+            else if (playerScore[i] >= 20 && playerScore[i] <= 23){
+                playerNumber += 7;
+            }
+            else if (playerScore[i] >= 24 && playerScore[i] <= 27){
+                playerNumber += 8;
+            }
+            else if (playerScore[i] >= 28 && playerScore[i] <= 33){
+                playerNumber += 9;
+            }
+            else if (playerScore[i] >= 36 && playerScore[i] <= 39){
+                playerNumber += 11;
+                if (playerNumber > 21){
+                    playerNumber -= 10;
+                }
+            } else if (playerScore[i] > -1) {
+                playerNumber += 10;
+            }
+        }
+        TextView playerScoreTextView = findViewById(R.id.playerScoreTextView);
+        playerScoreTextView.setText(String.valueOf(playerNumber));
     }
 
     public void showPlayerCard(){
@@ -207,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
         }
         addPlayerCard(card);
         showPlayerCard();
+        updatePlayerScoore();
 
     }
 
@@ -215,6 +257,9 @@ public class MainActivity extends AppCompatActivity {
             playerScore[i] = -1;
             playerCardsImageViews[i].setVisibility(View.INVISIBLE);
         }
+        playerNumber = 0;
+        TextView playerScoreTextView = findViewById(R.id.playerScoreTextView);
+        playerScoreTextView.setText(String.valueOf(playerNumber));
     }
 
     @Override
