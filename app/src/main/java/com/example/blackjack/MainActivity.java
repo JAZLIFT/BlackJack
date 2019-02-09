@@ -18,6 +18,22 @@ public class MainActivity extends AppCompatActivity {
     int[] playerScore = new int[5];
     int playerNumber = 0;
 
+    private int[] cardImages = {
+            R.drawable.two_s,   R.drawable.two_d,   R.drawable.two_c,   R.drawable.two_h,
+            R.drawable.three_s, R.drawable.three_d, R.drawable.three_c, R.drawable.two_h,
+            R.drawable.four_s,  R.drawable.four_d,  R.drawable.four_c,  R.drawable.four_h,
+            R.drawable.five_s,  R.drawable.five_d,  R.drawable. five_c, R.drawable.five_h,
+            R.drawable.six_s,   R.drawable.six_d,   R.drawable.six_c,   R.drawable.six_h,
+            R.drawable.seven_s, R.drawable.seven_d, R.drawable.seven_c, R.drawable.seven_h,
+            R.drawable.eight_s, R.drawable.eight_d, R.drawable.eight_c, R.drawable.eight_h,
+            R.drawable.nine_s,  R.drawable.nine_d,  R.drawable.nine_c,  R.drawable.nine_h,
+            R.drawable.ten_s,   R.drawable.ten_d,   R.drawable.ten_c,   R.drawable.ten_h,
+            R.drawable.ace_s,   R.drawable.ace_d,   R.drawable.ace_c,   R.drawable.ace_h,
+            R.drawable.jack_s,  R.drawable.jack_d,  R.drawable.jack_c,  R.drawable.jack_h,
+            R.drawable.queen_s, R.drawable.queen_d, R.drawable.queen_c, R.drawable.queen_h,
+            R.drawable.king_s,  R.drawable.king_d,  R.drawable.king_c,  R.drawable.king_h
+    };
+
     public void addPlayerCard(Integer card){
         for (int i = 0; i < playerScore.length; i++){
             if (playerScore[i] < 0){
@@ -27,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void updatePlayerScoore(){
+    public void updatePlayerScore(){
         playerNumber = 0;
         for (int i = 0; i < playerScore.length;i++){
             if (playerScore[i] >= 0 && playerScore[i] <= 3){
@@ -82,164 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 playerCardsImageViews[i].setVisibility(View.INVISIBLE);
             } else {
                 playerCardsImageViews[i].setVisibility(View.VISIBLE);
-            }
-            switch (playerScore[i]){
-                case 0:
-                    playerCardsImageViews[i].setImageResource(R.drawable.two_s);
-                    break;
-                case 1:
-                    playerCardsImageViews[i].setImageResource(R.drawable.two_d);
-                    break;
-                case 2:
-                    playerCardsImageViews[i].setImageResource(R.drawable.two_c);
-                    break;
-                case 3:
-                    playerCardsImageViews[i].setImageResource(R.drawable.two_h);
-                    break;
-                case 4:
-                    playerCardsImageViews[i].setImageResource(R.drawable.three_s);
-                    break;
-                case 5:
-                    playerCardsImageViews[i].setImageResource(R.drawable.three_d);
-                    break;
-                case 6:
-                    playerCardsImageViews[i].setImageResource(R.drawable.three_c);
-                    break;
-                case 7:
-                    playerCardsImageViews[i].setImageResource(R.drawable.three_h);
-                    break;
-                case 8:
-                    playerCardsImageViews[i].setImageResource(R.drawable.four_s);
-                    break;
-                case 9:
-                    playerCardsImageViews[i].setImageResource(R.drawable.four_d);
-                    break;
-                case 10:
-                    playerCardsImageViews[i].setImageResource(R.drawable.four_c);
-                    break;
-                case 11:
-                    playerCardsImageViews[i].setImageResource(R.drawable.four_h);
-                    break;
-                case 12:
-                    playerCardsImageViews[i].setImageResource(R.drawable.five_s);
-                    break;
-                case 13:
-                    playerCardsImageViews[i].setImageResource(R.drawable.five_d);
-                    break;
-                case 14:
-                    playerCardsImageViews[i].setImageResource(R.drawable.five_c);
-                    break;
-                case 15:
-                    playerCardsImageViews[i].setImageResource(R.drawable.five_h);
-                    break;
-                case 16:
-                    playerCardsImageViews[i].setImageResource(R.drawable.six_s);
-                    break;
-                case 17:
-                    playerCardsImageViews[i].setImageResource(R.drawable.six_d);
-                    break;
-                case 18:
-                    playerCardsImageViews[i].setImageResource(R.drawable.six_c);
-                    break;
-                case 19:
-                    playerCardsImageViews[i].setImageResource(R.drawable.six_h);
-                    break;
-                case 20:
-                    playerCardsImageViews[i].setImageResource(R.drawable.seven_s);
-                    break;
-                case 21:
-                    playerCardsImageViews[i].setImageResource(R.drawable.seven_d);
-                    break;
-                case 22:
-                    playerCardsImageViews[i].setImageResource(R.drawable.seven_c);
-                    break;
-                case 23:
-                    playerCardsImageViews[i].setImageResource(R.drawable.seven_h);
-                    break;
-                case 24:
-                    playerCardsImageViews[i].setImageResource(R.drawable.eight_s);
-                    break;
-                case 25:
-                    playerCardsImageViews[i].setImageResource(R.drawable.eight_d);
-                    break;
-                case 26:
-                    playerCardsImageViews[i].setImageResource(R.drawable.eight_c);
-                    break;
-                case 27:
-                    playerCardsImageViews[i].setImageResource(R.drawable.eight_h);
-                    break;
-                case 28:
-                    playerCardsImageViews[i].setImageResource(R.drawable.nine_s);
-                    break;
-                case 29:
-                    playerCardsImageViews[i].setImageResource(R.drawable.nine_d);
-                    break;
-                case 30:
-                    playerCardsImageViews[i].setImageResource(R.drawable.nine_c);
-                    break;
-                case 31:
-                    playerCardsImageViews[i].setImageResource(R.drawable.nine_h);
-                    break;
-                case 32:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ten_s);
-                    break;
-                case 33:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ten_d);
-                    break;
-                case 34:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ten_c);
-                    break;
-                case 35:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ten_h);
-                    break;
-                case 36:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ace_s);
-                    break;
-                case 37:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ace_d);
-                    break;
-                case 38:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ace_c);
-                    break;
-                case 39:
-                    playerCardsImageViews[i].setImageResource(R.drawable.ace_h);
-                    break;
-                case 40:
-                    playerCardsImageViews[i].setImageResource(R.drawable.jack_s);
-                    break;
-                case 41:
-                    playerCardsImageViews[i].setImageResource(R.drawable.jack_d);
-                    break;
-                case 42:
-                    playerCardsImageViews[i].setImageResource(R.drawable.jack_c);
-                    break;
-                case 43:
-                    playerCardsImageViews[i].setImageResource(R.drawable.jack_h);
-                    break;
-                case 44:
-                    playerCardsImageViews[i].setImageResource(R.drawable.queen_s);
-                    break;
-                case 45:
-                    playerCardsImageViews[i].setImageResource(R.drawable.queen_d);
-                    break;
-                case 46:
-                    playerCardsImageViews[i].setImageResource(R.drawable.queen_c);
-                    break;
-                case 47:
-                    playerCardsImageViews[i].setImageResource(R.drawable.queen_h);
-                    break;
-                case 48:
-                    playerCardsImageViews[i].setImageResource(R.drawable.king_s);
-                    break;
-                case 49:
-                    playerCardsImageViews[i].setImageResource(R.drawable.king_d);
-                    break;
-                case 50:
-                    playerCardsImageViews[i].setImageResource(R.drawable.king_c);
-                    break;
-                case 51:
-                    playerCardsImageViews[i].setImageResource(R.drawable.king_h);
-                    break;
+                playerCardsImageViews[i].setImageResource(cardImages[playerScore[i]]);
             }
         }
     }
@@ -255,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         }
         addPlayerCard(card);
         showPlayerCard();
-        updatePlayerScoore();
+        updatePlayerScore();
 
     }
 
