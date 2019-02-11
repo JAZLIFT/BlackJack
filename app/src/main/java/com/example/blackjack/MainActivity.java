@@ -1,9 +1,15 @@
 package com.example.blackjack;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,11 +17,21 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Declare Stats
+    int totalGames;
+    int totalWins;
+    int totalLosses;
+    int totalDraws;
+
+    //Shared Preferences
+    SharedPreferences sharedPreferences;
 
     Button playAgainButton;
     Button hitButton;
@@ -64,6 +80,35 @@ public class MainActivity extends AppCompatActivity {
             R.id.dealerCardImageView5
     };
 
+    // Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    // Menu Select
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.stats:
+                Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
+                intent.putExtra("totalGames", totalGames);
+                intent.putExtra("totalWins", totalWins);
+                intent.putExtra("totalLosses", totalLosses);
+                startActivity(intent);
+                break;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
+    // Check to make sure cards have not been drawn twice
     public static boolean isDuplicate(int[] array, int value){
         for (int i = 0; i < array.length; i ++){
             if (array[i] == value){
@@ -73,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    //
     public void resetDealersHand(){
         for (int i = 0; i < dealerScore.length; i++){
             dealerScore[i] = -1;
@@ -246,18 +292,6 @@ public class MainActivity extends AppCompatActivity {
         updatePlayerScore();
 
     }
-
-    public  void roundOver(Boolean won){
-        if (won){
-            playAgainButton.setText("YOU WON! \n Play Again?");
-        } else {
-            playAgainButton.setText("YOU LOST! \n Play Again?");
-        }
-        hitButton.setEnabled(false);
-        stayButton.setEnabled(false);
-        playAgainButton.setVisibility(View.VISIBLE);
-    }
-
     public void stayClicked(View view){
         showDealerCards();
         while (dealerNumber < 17){
@@ -267,11 +301,28 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "You Won!", Toast.LENGTH_SHORT).show();
             roundOver(true);
         } else
-            {
-                Toast.makeText(this,"You Lost!",Toast.LENGTH_SHORT).show();
-                roundOver(false);
-            }
+        {
+            Toast.makeText(this,"You Lost!",Toast.LENGTH_SHORT).show();
+            roundOver(false);
+        }
     }
+
+    public  void roundOver(Boolean won){
+        if (won)
+        {
+            playAgainButton.setText("YOU WON! \n Play Again?");
+            updateStats("WIN");
+        }
+        else
+        {
+            playAgainButton.setText("YOU LOST! \n Play Again?");
+            updateStats("LOSS");
+        }
+        hitButton.setEnabled(false);
+        stayButton.setEnabled(false);
+        playAgainButton.setVisibility(View.VISIBLE);
+    }
+
 
     public void newHand(View view){
         playAgainButton.setVisibility(View.INVISIBLE);
@@ -290,6 +341,33 @@ public class MainActivity extends AppCompatActivity {
             hitMe(playerScoreTextView);
         }
         resetDealersHand();
+    }
+
+    public void updateStats(String result){
+        totalGames ++;
+        Log.i("TOTAL GAMES", String.valueOf(totalGames));
+        sharedPreferences.edit().putInt("totalGames",totalGames).apply();
+
+        if (result.equals("WIN"))
+        {
+            totalWins++;
+            sharedPreferences.edit().putInt("totalWins",totalWins).apply();
+
+        }
+        else if (result.equals("LOSS"))
+        {
+            totalLosses++;
+            sharedPreferences.edit().putInt("totalLosses",totalLosses).apply();
+
+        }
+        else if (result.equals("DRAW"))
+        {
+
+        }
+        else
+        {
+            Toast.makeText(this,"Problem Saving Stats!",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -322,5 +400,15 @@ public class MainActivity extends AppCompatActivity {
 
         resetDealersHand();
         newHand(playerCardsImageViews[1]);
+
+        // SharedPreferences Saving score
+        sharedPreferences = this.getSharedPreferences("com.example.blackjack", Context.MODE_PRIVATE);
+
+        totalGames =sharedPreferences.getInt("totalGames",0);
+        totalWins =sharedPreferences.getInt("totalWins", 0);
+        totalLosses = sharedPreferences.getInt("totalLosses", 0);
+        Toast.makeText(this,"SAVE LOADED",Toast.LENGTH_SHORT).show();
+        Log.i("TOTAL GAMES", Integer.toString(totalGames));
+
     }
 }
