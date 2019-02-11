@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button hitButton;
     Button stayButton;
 
-    int[] playerScore = new int[5];
+    int[] playerScore = new int[6];
     int playerNumber = 0;
     boolean playerTurn = true;
 
@@ -41,25 +41,27 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.king_s,  R.drawable.king_d,  R.drawable.king_c,  R.drawable.king_h
     };
 
-    ImageView[] playerCardsImageViews = new ImageView[5];
+    ImageView[] playerCardsImageViews = new ImageView[6];
     private int[] playersCardsIDs = {
             R.id.playerCardImageView1,
             R.id.playerCardImageView2,
             R.id.playerCardImageView3,
             R.id.playerCardImageView4,
-            R.id.playerCardImageView5
+            R.id.playerCardImageView5,
+            R.id.playerCardImageView6
     };
 
-    int[] dealerScore = new int[5];
+    int[] dealerScore = new int[6];
     int dealerNumber = 0;
 
-    ImageView[] dealersCardsImageViews = new ImageView[5];
+    ImageView[] dealersCardsImageViews = new ImageView[6];
     private int[] dealersCardsIDs = {
             R.id.dealerCardImageView0,
             R.id.dealerCardImageView1,
             R.id.dealerCardImageView2,
             R.id.dealerCardImageView3,
-            R.id.dealerCardImageView4
+            R.id.dealerCardImageView4,
+            R.id.dealerCardImageView5
     };
 
     public static boolean isDuplicate(int[] array, int value){
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             addDealerCard();
         }
         showDealerCards();
+        dealersCardsImageViews[1].setImageResource(R.drawable.yellow_back);
     }
     public void showDealerCards(){
         for (int i = 0; i < dealerScore.length; i++)
@@ -187,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             else if (playerScore[i] >= 24 && playerScore[i] <= 27){
                 playerNumber += 8;
             }
-            else if (playerScore[i] >= 28 && playerScore[i] <= 33){
+            else if (playerScore[i] >= 28 && playerScore[i] <= 31){
                 playerNumber += 9;
             }
             else if (playerScore[i] >= 36 && playerScore[i] <= 39){
@@ -256,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void stayClicked(View view){
+        showDealerCards();
         while (dealerNumber < 17){
             addDealerCard();
         }
@@ -300,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
         playAgainButton = findViewById(R.id.playAgainButton);
         playAgainButton.setVisibility(View.INVISIBLE);
         //Setting up hands
-        for (int i = 0; i < 5; i ++){
+        for (int i = 0; i < playerCardsImageViews.length; i ++){
             playerCardsImageViews[i] = findViewById(playersCardsIDs[i]);
             dealersCardsImageViews[i] = findViewById(dealersCardsIDs[i]);
         }

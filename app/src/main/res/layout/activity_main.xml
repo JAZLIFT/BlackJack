@@ -21,7 +21,6 @@
         android:id="@+id/playerCardImageView1"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +30,6 @@
         android:id="@+id/dealerCardImageView0"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +39,6 @@
         android:id="@+id/dealerCardImageView1"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/dealerCardImageView0"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +48,6 @@
         android:id="@+id/dealerCardImageView2"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/dealerCardImageView1"
         app:layout_constraintTop_toTopOf="parent"
@@ -61,7 +57,6 @@
         android:id="@+id/dealerCardImageView3"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/dealerCardImageView2"
         app:layout_constraintTop_toTopOf="parent"
@@ -71,9 +66,17 @@
         android:id="@+id/dealerCardImageView4"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/dealerCardImageView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/two_c" />
+
+    <ImageView
+        android:id="@+id/dealerCardImageView5"
+        android:layout_width="69dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/dealerCardImageView4"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/two_c" />
 
@@ -81,7 +84,6 @@
         android:id="@+id/playerCardImageView2"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playerCardImageView1"
@@ -91,7 +93,6 @@
         android:id="@+id/playerCardImageView3"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playerCardImageView2"
@@ -101,7 +102,6 @@
         android:id="@+id/playerCardImageView4"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playerCardImageView3"
@@ -111,10 +111,18 @@
         android:id="@+id/playerCardImageView5"
         android:layout_width="69dp"
         android:layout_height="105dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playerCardImageView4"
+        app:srcCompat="@drawable/two_c" />
+
+    <ImageView
+        android:id="@+id/playerCardImageView6"
+        android:layout_width="69dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playerCardImageView5"
         app:srcCompat="@drawable/two_c" />
 
     <TextView
