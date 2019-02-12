@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 
+            case R.id.resetStats:
+                resetStats();
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -368,6 +372,17 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"Problem Saving Stats!",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void resetStats(){
+        totalDraws = 0;
+        totalWins = 0;
+        totalLosses = 0;
+        totalGames = 0;
+        sharedPreferences.edit().putInt("totalGames",totalGames).apply();
+        sharedPreferences.edit().putInt("totalWins",totalWins).apply();
+        sharedPreferences.edit().putInt("totalLosses",totalLosses).apply();
+        sharedPreferences.edit().putInt("totalDraws",totalDraws).apply();
     }
 
     @Override

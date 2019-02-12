@@ -22,12 +22,17 @@ public class StatsActivity extends AppCompatActivity {
         int totalGames = intent.getIntExtra("totalGames",0);
         int totalWins = intent.getIntExtra("totalWins", 0);
         int totalLosses = intent.getIntExtra("totalLosses",0);
+        int winRate;
         Toast.makeText(this, "TOTAL GAMES " + String.valueOf(totalGames),Toast.LENGTH_LONG).show();
         ArrayList<String> statItems = new ArrayList<String>();
 
         statItems.add("Total Games : " + Integer.toString(totalGames));
         statItems.add("Total Wins : " + Integer.toString(totalWins));
         statItems.add("Total Losses : " + Integer.toString(totalLosses));
+        if (totalGames != 0 && totalWins != 0){
+            winRate = (totalWins*100)/totalGames;
+            statItems.add("Winrate :" + winRate+"%");
+        }
 
 
         ListView listView = findViewById(R.id.listView);
