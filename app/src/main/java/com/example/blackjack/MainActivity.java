@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
             if (dealerScore[i] < 0){
                 dealersCardsImageViews[i].setVisibility(View.INVISIBLE);
             } else {
+                dealersCardsImageViews[i].setTranslationY(-1000);
+                dealersCardsImageViews[i].animate().translationYBy(1000).setDuration(200*i);
                 dealersCardsImageViews[i].setVisibility(View.VISIBLE);
                 dealersCardsImageViews[i].setImageResource(cardImages[dealerScore[i]]);
             }
