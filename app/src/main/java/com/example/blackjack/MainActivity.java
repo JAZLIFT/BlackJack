@@ -424,7 +424,6 @@ public class MainActivity extends AppCompatActivity {
         totalGames =sharedPreferences.getInt("totalGames",0);
         totalWins =sharedPreferences.getInt("totalWins", 0);
         totalLosses = sharedPreferences.getInt("totalLosses", 0);
-        Toast.makeText(this,"SAVE LOADED",Toast.LENGTH_SHORT).show();
         Log.i("TOTAL GAMES", Integer.toString(totalGames));
 
     }
